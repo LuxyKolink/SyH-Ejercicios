@@ -1,4 +1,4 @@
-const fs = require('node:fs');
-const file = fs.createWriteStream('example.txt');
-file.write('hello, ');
-file.end('world!');
+const fs = require('fs')
+const file = process.argv[2]
+
+fs.createReadStream(file).pipe(process.stdout)
