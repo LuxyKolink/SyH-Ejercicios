@@ -1,19 +1,19 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const connectDB = require('../database/mysql.db');
 
-const User = sequelize.define('User', {
-  // Model attributes are defined here
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  lastName: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
-  }
-}, {
-  // Other model options go here
-});
+const getUsers = async () => {
+  return new Promise((res, rej) => {
+    connectDB.query('SELECT * FROM User', (err, results) => {
+      if (err) {
+        console.error(err);
+        rej(err)
+        return;
+      }
+      res(results)
+    });
+  })
 
-// `sequelize.define` also returns the model
-console.log(User === sequelize.models.User); // true
+}
+
+module.exports = {
+  getUsers
+}
