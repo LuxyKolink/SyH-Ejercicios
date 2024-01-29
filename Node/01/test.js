@@ -22,18 +22,26 @@ const http = require('node:http')
 
 // modules(emptyList);
 
-const url = 'http://localhost:4000/'
+// const url = 'http://localhost:4000/'
 
-modules(url)
+// modules(url)
 
 
-const server = http.createServer((req, res) => {
-    console.log(req.url, req.method);
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World');
-  });
+// const server = http.createServer((req, res) => {
+//     console.log(req.url, req.method);
+//     res.statusCode = 200;
+//     res.setHeader('Content-Type', 'text/plain');
+//     res.end('Hello World');
+//   });
 
-server.listen(4000, () => {
-    console.log('Connected to port 4000');
-});
+// server.listen(4000, () => {
+//     console.log('Connected to port 4000');
+// });
+
+// const str = process.argv.slice(2)
+// let newStr = ''
+
+// for (let i = 0; i < str.length; i++) {
+//   newStr += str[i] + ' '
+// }
+// console.log(newStr);

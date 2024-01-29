@@ -49,3 +49,6 @@ INSERT INTO Cuenta (id, client_id, name, interestRate, minimumBalance) VALUES
 (1, 1, 'Cuenta1', 2.5, 1000.00),
 (2, 2, 'Cuenta2', 3.0, 1500.00),
 (3, 3, 'Cuenta3', 1.8, 800.00);
+
+SELECT * FROM user;
+DELETE FROM User WHERE id = 9;
