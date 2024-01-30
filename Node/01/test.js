@@ -1,6 +1,7 @@
 const modules = require('./module')
 const path = require('path')
 const http = require('node:http')
+const fs = require('fs')
 // modules(process.argv.slice(2))
 
 // const dir = path.join(__dirname)
@@ -17,7 +18,7 @@ const http = require('node:http')
 
 // for (let i = 0; i < srt.length; i++) {
 //     emptyList += srt[i] + ' ';
-    
+
 // }
 
 // modules(emptyList);
@@ -42,6 +43,30 @@ const http = require('node:http')
 // let newStr = ''
 
 // for (let i = 0; i < str.length; i++) {
-//   newStr += str[i] + ' '
+//     newStr += str[i] + ' '
 // }
 // console.log(newStr);
+
+// const dir = process.argv[2] || 'F:/Cursos/Node/01'
+// const ext = process.argv[3] || 'js'
+
+// fs.readdir(dir, (err, list) => {
+//     if (err) console.error(err);
+//     for (let i = 0; i < list.length; i++) {
+//         if (path.extname(list[i]) === `.${ext}`){
+//             console.log(list[i]);
+//         }
+        
+//     }
+// })
+
+const url = process.argv[2] || 'http://localhost:3000/'
+
+http.get(url, (res) => {
+    res.setEncoding('utf-8');
+    res.on('data', (chunk) => {
+        console.log(chunk);
+    })
+}).on('error', (err) => {
+    console.error(err);
+})

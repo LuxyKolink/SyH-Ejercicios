@@ -1,3 +1,4 @@
 const app = require('./app')
 
-app.hello()
+app.getOs()
+// console.log(app.getStats().usagePerCore);

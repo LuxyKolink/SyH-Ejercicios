@@ -7,7 +7,8 @@ app(dir, ext, (err, res) => {
     if (err) {
         console.error(err);
     }
-    for (let i in res) {
-        console.log(res[i]);
-    }
+    // for (let i in res) {
+    //     console.log(res[i]);
+    // }
+    console.log(res);
 })

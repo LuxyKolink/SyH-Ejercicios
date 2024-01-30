@@ -13,6 +13,6 @@ module.exports = function (dir, ext, callback) {
                 result.push(list[i])
             }
         }
-        callback(null, result)
+        callback(null, /*result*/ result.join('\n'))
     })
 }

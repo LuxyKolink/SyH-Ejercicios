@@ -11,20 +11,20 @@ server.listen(port[0], hostname, () => {
     console.log(`Server running at http://${hostname}:${port[0]}/`);
 });
 
-const server2 = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('I love you');
-});
-server2.listen(port[1], hostname, () => {
-    console.log(`Server running at http://${hostname}:${port[1]}/`);
-});
+// const server2 = http.createServer((req, res) => {
+//     res.statusCode = 200;
+//     res.setHeader('Content-Type', 'text/plain');
+//     res.end('I love you');
+// });
+// server2.listen(port[1], hostname, () => {
+//     console.log(`Server running at http://${hostname}:${port[1]}/`);
+// });
 
-const server3 = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('<3');
-});
-server3.listen(port[2], hostname, () => {
-    console.log(`Server running at http://${hostname}:${port[2]}/`);
-});
+// const server3 = http.createServer((req, res) => {
+//     res.statusCode = 200;
+//     res.setHeader('Content-Type', 'text/plain');
+//     res.end('<3');
+// });
+// server3.listen(port[2], hostname, () => {
+//     console.log(`Server running at http://${hostname}:${port[2]}/`);
+// });
