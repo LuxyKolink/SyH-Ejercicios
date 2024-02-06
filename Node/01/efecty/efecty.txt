@@ -1,0 +1,7 @@
+Nombre,Edad,Ciudad,Profesión
+"Juan Pérez",32,"Bogotá","Ingeniero de Software"
+"María Gómez",28,"Medellín","Diseñadora Gráfica"
+"Carlos Ramírez",35,"Cali","Contador"
+"Sofía Rodríguez",40,"Barranquilla","Médico"
+"Alejandro Vargas",26,"Cartagena","Estudiante"
+Total de Registros: 5

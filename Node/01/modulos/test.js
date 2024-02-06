@@ -1,4 +1,5 @@
-async function nums(nums) {
+
+function nums(nums) {
     let list = []
     let total = 0
     for (let i = 0; i < nums.length; i++) {
@@ -13,7 +14,8 @@ function hello(str) {
 }
 
 // const str = process.argv.slice(2).join(' ')
-const numbers = process.argv.slice(2)
+const numbers = process.argv[2]
+console.log(numbers);
 // hello(str)
 nums(numbers)
 

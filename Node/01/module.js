@@ -1,7 +1,7 @@
 const os = require('os')
 const path = require('path')
 const fs = require('fs')
-const http = require('http')
+
 
 // module.exports = async (dir, ext, callback) => {
 //     fs.readdir(dir, (err, list) => {
@@ -18,14 +18,19 @@ const http = require('http')
 //     })
 // }
 
-// module.exports = async (url) => {
-//     http.get(url, (res)  => {
-//         res.setEncoding('utf8');
-//         res.on('data', (chunk) => {
-//             console.log(chunk);
-//         })
-//     }).on('error', (err) => {
-//         console.error(err);
-//     })
-// }
+const http = require('http')
+
+module.exports = (serverUrl) => {
+    http.get(serverUrl, (nodeResponse) => {
+        nodeResponse.setEncoding('utf-8');
+        nodeResponse.on('data', (chunk) => {
+            console.log(chunk);
+        })
+    }).on('error', (err) => {
+        console.error(err);
+    })
+}
+
+
+
 

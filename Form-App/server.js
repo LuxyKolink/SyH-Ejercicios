@@ -3,7 +3,7 @@ require('dotenv/config')
 
 const connectDB = require('./database/mysql.db')
 const logger = require('./middleware/middleware')
-const route = require('./router/route')
+const route = require('./router/users')
 const app = express()
 const port = 3000
 

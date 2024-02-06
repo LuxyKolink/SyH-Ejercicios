@@ -60,13 +60,14 @@ const fs = require('fs')
 //     }
 // })
 
-const url = process.argv[2] || 'http://localhost:3000/'
+const serverUrl = process.argv[2] || 'http://localhost:3000/'
 
-http.get(url, (res) => {
-    res.setEncoding('utf-8');
-    res.on('data', (chunk) => {
+http.get(serverUrl, (nodeResponse) => {
+    nodeResponse.setEncoding('utf-8');
+    nodeResponse.on('data', (chunk) => {
         console.log(chunk);
     })
 }).on('error', (err) => {
     console.error(err);
 })
+
