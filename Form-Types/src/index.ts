@@ -1,25 +1,13 @@
-// const express = require("express");
-import dotenv from "dotenv";
-import express, { Application } from "express";
-import router from "./router/router";
-import path from "path";
-dotenv.config({
-  path: path.join(__dirname, "../config/.env.development"),
-});
-const app: Application = express();
-const port = process.env.PORT ? process.env.PORT : "undefined";
+import UserModel from "./model/User";
+import UserController from "./controller/user.controller";
+import ServerRouter from "./server/router/router";
+import Server from "./server/server";
 
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
-app.use(express.json());
+const userModel = new UserModel();
+const userController = new UserController(userModel);
+const serverRouter = new ServerRouter(userController)
 
-app.use("/", router);
-app.use("*", router);
+const server = new Server(serverRouter)
+server.start();
 
-app.listen(port, () => {
-  const hostname = process.env.HOST ? process.env.HOST : "undefined";
-  console.info(`Server running at http://${hostname}:${port}/`);
-});
+
