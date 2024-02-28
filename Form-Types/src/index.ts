@@ -1,4 +1,4 @@
-import UserModel from "./model/User";
+import UserModel from "./model/json/User";
 import UserController from "./controller/user.controller";
 import ServerRouter from "./server/router/router";
 import Server from "./server/server";

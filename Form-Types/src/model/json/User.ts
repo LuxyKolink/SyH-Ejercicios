@@ -1,6 +1,5 @@
-// import User from "../interface/user.interface";
-import users from "../../database/users.json";
-import User from "../interface/user.interface";
+import users from "../../../database/users.json";
+import User from "../../interface/user.interface";
 
 export default class UserModel {
     getTotalPages = (): number => {
