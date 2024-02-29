@@ -9,5 +9,3 @@ const serverRouter = new ServerRouter(userController)
 
 const server = new Server(serverRouter)
 server.start();
-
-
