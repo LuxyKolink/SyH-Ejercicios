@@ -1,4 +1,4 @@
-import AsociadoModelo from "./model/asociado.model";
+import AsociadoModelo from "./model/json-asociado.model";
 import AsociadoControlador from "./controller/asociado.controller";
 import ServidorRouter from "./server/router/router";
 import Servidor from "./server/server";

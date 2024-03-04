@@ -7,7 +7,7 @@ export default class AsociadoModelo {
     }
 
     // Obtener por Código Asociado
-    getById = (codigo: string): Asociado | null => {
+    getById = (codigo: string): Partial<Asociado> | null => {
         try {
             if (asociados !== undefined) {
                 for (const entidadAsociado of asociados) {
@@ -38,7 +38,8 @@ export default class AsociadoModelo {
                     }
                     listaAsociados.push({
                         asoCod: entidadAsociado.asoCod,
-                        asoNom: entidadAsociado.asoNom
+                        asoNom: entidadAsociado.asoNom,
+                        asoEstado: "A"
                     })
                 }
                 return listaAsociados

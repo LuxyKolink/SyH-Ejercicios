@@ -14,6 +14,7 @@ export default class ServidorRouter {
     routes = (): void => {
         this.router.get('/asociados', this.asociadoControlador.getAll)
         this.router.get('/asociados/:id', this.asociadoControlador.getById)
+        this.router.post('/asociados', this.asociadoControlador.create)
     }
 }
 

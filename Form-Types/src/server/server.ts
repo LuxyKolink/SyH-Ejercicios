@@ -32,18 +32,19 @@ export default class Server {
     }
 
     start = async (): Promise<void> => {
-        const db = new MysqlDB()
+        const db = new MysqlDB();
         try {
-            await db.auth()
-            console.log("Database conection established.");
+            await db.client.sync({force: false});
+            console.log('Connection has been established successfully.');
             const port = process.env.PORT
             this.#app.listen(port, () => {
                 const hostname = process.env.HOST ? process.env.HOST : "undefined";
                 console.info(`Server running at http://${hostname}:${port}/`);
             });
         } catch (error) {
-            console.error("Database conection failed.");
+            console.error('Unable to connect to the database:', error);
         }
+        
 
     }
 }
