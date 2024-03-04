@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express, { Application } from "express";
 import path from "path";
-import MysqlDB from "../../database/mysql.db";
+import MysqlDB, { /*sequelize*/ } from "../../database/mysql.db";
 import ServidorRouter from "./router/router";
 
 export default class Servidor {
@@ -34,7 +34,11 @@ export default class Servidor {
     start = async (): Promise<void> => {
         const db = new MysqlDB();
         try {
+            // await sequelize.sync({force: false});
             await db.client.sync({force: false});
+            // console.log(sequelize.config);
+            console.log(db.client.config);
+            
             console.log('Connection has been established successfully.');
             const port = process.env.PORT
             this.#aplicacion.listen(port, () => {

@@ -58,10 +58,11 @@ export default class AsociadoControlador {
         try {
             const { asoNom } = req.body
             const nuevoAsociado = await MysqlAsociadoModel.create({
-                asoNom
+                asoNom,
             },{
                 fields: ["asoNom"]
             });
+            
             if (nuevoAsociado) {
                 res.status(200).json({'message': 'Usuario creado con exito'})
             }

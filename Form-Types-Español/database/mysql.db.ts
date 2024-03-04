@@ -1,6 +1,9 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
-import path from "path";
+
+export const sequelize = new Sequelize(process.env.MYSQLDATABASE!, process.env.MYSQLUSER!, process.env.MYSQLPASSWORD, {
+    host: process.env.MYSQLHOST,
+    dialect: 'mysql'
+})
 
 export default class MysqlDB {
 
@@ -12,9 +15,6 @@ export default class MysqlDB {
     port: string | undefined
 
     constructor(){
-        this.#configuracion()
-        console.log(process.env.MYSQLPASSWORD);
-        
         this.host = process.env.MYSQLHOST;
         this.user = process.env.MYSQLUSER;
         this.db = process.env.MYSQLDATABASE;
@@ -26,15 +26,6 @@ export default class MysqlDB {
             dialect: 'mysql'
         })
 
-    }
-
-    #configuracion = (): void => {
-        dotenv.config({
-            path: [
-                path.join(__dirname, "../../config/.env.development"),
-                path.join(__dirname, "../../../config/.env.development")
-            ]
-        });
     }
 
 }

@@ -1,4 +1,4 @@
-import asociados from "../../database/asociados.json";
+import asociados from "../../database/json/asociados.json";
 import Asociado from "../interface/asociado.interface";
 
 export default class AsociadoModelo {
