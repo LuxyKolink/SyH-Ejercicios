@@ -1,5 +1,5 @@
 import AsociadoModelo from "../model/json-asociado.model"
-import { MysqlAsociadoModel } from "../../database/models/asociado-model";
+import { Asociado } from "../../database/models/asociado-model";
 import { Request, Response } from "express";
 
 export default class AsociadoControlador {
@@ -26,7 +26,7 @@ export default class AsociadoControlador {
             console.log(asoCod);
             
             // const asociado = this.asociadoModelo.getById(asoCod)
-            const asociado = await MysqlAsociadoModel.findOne({
+            const asociado = await Asociado.findOne({
                 where: {
                     AsoCod: asoCod
                 }
@@ -45,7 +45,7 @@ export default class AsociadoControlador {
     getAll = async (_req: Request, res: Response) => {
         try {
             // const asociados = this.asociadoModelo.getAll()
-            const asociados = await MysqlAsociadoModel.findAll({
+            const asociados = await Asociado.findAll({
                 attributes: ["AsoCod", "AsoEstado", "AsoNom"]
             })
             res.status(200).json({'data': asociados})
@@ -57,7 +57,7 @@ export default class AsociadoControlador {
     create = async (req: Request, res: Response) => {
         try {
             const { asoNom } = req.body
-            const nuevoAsociado = await MysqlAsociadoModel.create({
+            const nuevoAsociado = await Asociado.create({
                 asoNom,
             },{
                 fields: ["asoNom"]
