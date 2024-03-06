@@ -35,10 +35,6 @@ export default class Servidor {
         const db = new MysqlDB();
         try {
             await db.client.sync({ force: false})
-            console.log(db.client.config);
-            
-            // await sequelize.sync({force: false});
-            // console.log(sequelize.config);
             console.log('Connection has been established successfully.');
             const port = process.env.PORT
             this.#aplicacion.listen(port, () => {

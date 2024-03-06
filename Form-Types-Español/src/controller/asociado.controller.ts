@@ -1,5 +1,5 @@
-import AsociadoModelo from "../model/json-asociado.model"
-import { Asociado } from "../../database/models/asociado-model";
+import AsociadoModelo from "../model/json/json-asociado.model"
+import { Asociado } from "../../database/models/asociado";
 import { Request, Response } from "express";
 
 export default class AsociadoControlador {
@@ -26,13 +26,15 @@ export default class AsociadoControlador {
             console.log(asoCod);
             
             // const asociado = this.asociadoModelo.getById(asoCod)
-            const asociado = await Asociado.findOne({
+            const asociado = await Asociado().findOne({
                 where: {
                     AsoCod: asoCod
                 }
             })
             if (asociado) {
                 res.status(200).json({"datos": asociado})
+            } else {
+                res.status(400).json({ 'message': 'Asociado no existe' })
             }
         } catch (error) {
             console.error(error);
@@ -40,6 +42,8 @@ export default class AsociadoControlador {
             res.status(500).json({ 'message': 'Error interno del servidor' })
         }
     }
+
+    
 
     // Obtener todos los asociados
     getAll = async (_req: Request, res: Response) => {

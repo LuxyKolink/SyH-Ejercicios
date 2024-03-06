@@ -1,14 +1,5 @@
-// import { DataTypes, Sequelize } from "sequelize";
-// import AsociadoModel from "./models/asociado-model";
-
 import { Sequelize } from "sequelize"
-import { Asociado } from "./models/asociado-model"
-
-export const sequelize = new Sequelize(process.env.MYSQLDATABASE!, process.env.MYSQLUSER!, process.env.MYSQLPASSWORD, {
-    host: process.env.MYSQLHOST,
-    dialect: 'mysql',
-    logging: false
-})
+import { Asociado } from "./models/asociado"
 
 export default class MysqlDB {
 
@@ -31,12 +22,10 @@ export default class MysqlDB {
             dialect: 'mysql'
         })
 
-        this.models();
-
     }
 
-    models = (): void => {
-        new Asociado();
+    config = (): void => {
+        Asociado(this.client)
     }
 
 }

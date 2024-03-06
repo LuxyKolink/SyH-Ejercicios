@@ -1,5 +1,5 @@
-import asociados from "../../database/json/asociados.json";
-import Asociado from "../interface/asociado.interface";
+import asociados from "../../../database/json/asociados.json";
+import Asociado from "../../interface/asociado.interface";
 
 export default class AsociadoModelo {
     getPaginasTotales = (): number => {
