@@ -1,5 +1,4 @@
-import AsociadoModelo from "../model/json/json-asociado.model"
-import { Asociado } from "../../database/models/asociado";
+import AsociadoModelo from "../model/asociado-model";
 import { Request, Response } from "express";
 
 export default class AsociadoControlador {
@@ -10,15 +9,6 @@ export default class AsociadoControlador {
 
     }
 
-    getPaginasTotales = async (_req: Request, res: Response) => {
-        try {
-            const numeroDePaginas = this.asociadoModelo.getPaginasTotales()
-            res.status(200).json({numeroDePaginas})
-        } catch (error) {
-            res.status(500).json({ 'message': 'Error interno del servidor' })
-        }
-    }
-
     // Obtener por Código Asociado
     getById = async (req: Request, res: Response) => {
         try {
@@ -26,11 +16,7 @@ export default class AsociadoControlador {
             console.log(asoCod);
             
             // const asociado = this.asociadoModelo.getById(asoCod)
-            const asociado = await Asociado().findOne({
-                where: {
-                    AsoCod: asoCod
-                }
-            })
+            const asociado = await this.asociadoModelo.getById(asoCod)
             if (asociado) {
                 res.status(200).json({"datos": asociado})
             } else {
@@ -49,9 +35,7 @@ export default class AsociadoControlador {
     getAll = async (_req: Request, res: Response) => {
         try {
             // const asociados = this.asociadoModelo.getAll()
-            const asociados = await Asociado.findAll({
-                attributes: ["AsoCod", "AsoEstado", "AsoNom"]
-            })
+            const asociados = await this.asociadoModelo.getAll();
             res.status(200).json({'data': asociados})
         } catch (error) {
             res.status(500).json({ 'message': 'Error interno del servidor' })
@@ -60,13 +44,10 @@ export default class AsociadoControlador {
 
     create = async (req: Request, res: Response) => {
         try {
-            const { asoNom } = req.body
-            const nuevoAsociado = await Asociado.create({
-                asoNom,
-            },{
-                fields: ["asoNom"]
-            });
+            const newAsociado = req.body
             
+            const nuevoAsociado = await this.asociadoModelo.create(newAsociado);
+        
             if (nuevoAsociado) {
                 res.status(200).json({'message': 'Usuario creado con exito'})
             }

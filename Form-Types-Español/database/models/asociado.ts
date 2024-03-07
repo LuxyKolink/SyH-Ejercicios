@@ -1,76 +1,39 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-// import { MaestroCuentas } from "./maestrocuentas-model";
-// import { MaestroCuentas } from "./maestrocuentas-model";
+import MaestroCuentas from "./maestrocuentas";
 
-export const Asociado = (sequelize: Sequelize) => {
-    class Asociado extends Model {}
+export default class Asociado extends Model {
+    declare asoCod: number;
+    declare asoNom: string;
+    declare asoEstado: string;
 
-    Asociado.init({
-        asoCod: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        asoNom: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        asoEstado: {
-            type: DataTypes.STRING,
-            defaultValue: "A"
-        }
-    }, {
-        sequelize,
-        tableName: "asociados",
-        timestamps: false,
-    })
-    return Asociado;
+    static asociacion(){
+        Asociado.hasMany(MaestroCuentas ,{
+            foreignKey: "asoCod",
+            sourceKey: "asoCod",
+        });
+        Asociado.belongsTo(MaestroCuentas , { foreignKey: "asoCod", targetKey: "asoCod" });
+    }
+
+    static inicio(sequelize: Sequelize) {
+        Asociado.init({
+            asoCod: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            },
+            asoNom: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            asoEstado: {
+                type: DataTypes.STRING,
+                defaultValue: "A"
+            }
+        }, {
+            sequelize,
+            tableName: "asociados",
+            timestamps: false,
+        })
+    }
+
 }
-
-class AsociadoModel extends Model {}
-
-    AsociadoModel.init({
-        asoCod: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        asoNom: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        asoEstado: {
-            type: DataTypes.STRING,
-            defaultValue: "A"
-        }
-    }, {
-        sequelize,
-        tableName: "asociados",
-        timestamps: false,
-    })
-
-// export const Asociado = sequelize.client.define("Asociado", {
-//     asoCod: {
-//         type: DataTypes.INTEGER,
-//         primaryKey: true,
-//         autoIncrement: true
-//     },
-//     asoNom: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     },
-//     asoEstado: {
-//         type: DataTypes.STRING,
-//         defaultValue: "A"
-//     }
-// }, {
-//     // schema: "test",
-//     tableName: "asociados",
-//     timestamps: false,
-// })
-
-// Asociado.hasMany(MaestroCuentas ,{
-//     foreignKey: "asoCod",
-//     sourceKey: "asoCod",
-// });
-// Asociado.belongsTo(MaestroCuentas , { foreignKey: "asoCod", targetKey: "asoCod" });

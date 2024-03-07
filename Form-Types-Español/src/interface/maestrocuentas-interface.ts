@@ -1,4 +1,4 @@
-export default interface MaestroCuentas {
+export default interface IMaestroCuentas {
     MCtaCod: number,
     MCtaSalAct: number
 }

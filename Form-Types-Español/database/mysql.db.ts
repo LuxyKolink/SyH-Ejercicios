@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize"
-import { Asociado } from "./models/asociado"
+import Asociado from "./models/asociado"
+import MaestroCuentas from "./models/maestrocuentas"
 
 export default class MysqlDB {
 
@@ -21,11 +22,14 @@ export default class MysqlDB {
             host: this.host,
             dialect: 'mysql'
         })
+        this.config();
 
     }
 
     config = (): void => {
-        Asociado(this.client)
+        Asociado.inicio(this.client);
+        MaestroCuentas.inicio(this.client);
+        Asociado.asociacion();
     }
 
 }

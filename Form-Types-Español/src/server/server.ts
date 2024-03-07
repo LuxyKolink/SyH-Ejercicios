@@ -34,7 +34,10 @@ export default class Servidor {
     start = async (): Promise<void> => {
         const db = new MysqlDB();
         try {
-            await db.client.sync({ force: false})
+            await db.client.sync({
+                force: false,
+                logging: false 
+            });
             console.log('Connection has been established successfully.');
             const port = process.env.PORT
             this.#aplicacion.listen(port, () => {

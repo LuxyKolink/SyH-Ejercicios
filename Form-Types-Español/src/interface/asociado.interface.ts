@@ -1,4 +1,4 @@
-export default interface Asociado {
+export default interface IAsociado {
     asoCod: number,
     asoEstado: string,
     asoNom: string
