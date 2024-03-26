@@ -40,8 +40,8 @@ export default class Servidor {
             await baseDeDatos.sincronizacion()
             const puerto = process.env.PUERTO
             this.#aplicacion.listen(puerto, () => {
-                const nombreHost = process.env.HOST
-                console.info(`Servidor corriendo en http://${nombreHost}:${puerto}/`)
+                const host = process.env.HOST
+                console.info(`Servidor corriendo en http://${host}:${puerto}/`)
             })
         } catch (error) {
             console.error('No se pudo conectar a Mysql:', error);

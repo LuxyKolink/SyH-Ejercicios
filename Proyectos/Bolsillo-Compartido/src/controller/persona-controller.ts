@@ -10,6 +10,7 @@ export default class PersonaControlador {
             })
             res.status(200).json({ data: personas})
         } catch (error) {
+            console.error(error);
             res.status(500).json({ 'message': 'Error interno del servidor' })
         }
     }
@@ -22,12 +23,14 @@ export default class PersonaControlador {
                 email: datosPersona.email,
                 cc: datosPersona.cc
             }, {
-                fields: ["nombre", "correo", "cc"]
+                fields: ["nombre", "email", "cc"]
             })
             if (nuevaPersona) {
                 res.status(201).json({ mensaje: `Usuario ${datosPersona.nombre} creado con exito!.`})
             }
         } catch (error) {
+            console.error(error);
+            
             res.status(500).json({ 'message': 'Error interno del servidor' })
         }
     }
