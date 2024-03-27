@@ -1,4 +1,6 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import Ingreso from "./ingreso-modelo";
+import Gasto from "./gasto-modelo";
 
 export default class Persona extends Model {
     declare id: number
@@ -33,5 +35,16 @@ export default class Persona extends Model {
             tableName: "persona",
             // timestamps: false,
         });
+    }
+
+    static asociaciones(){
+        Persona.hasMany(Ingreso, {
+            foreignKey: "personaId",
+            sourceKey: "id"
+        })
+        Persona.hasMany(Gasto, {
+            foreignKey: "personaId",
+            sourceKey: "id"
+        })
     }
 }

@@ -1,5 +1,7 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import TipoGasto from "./tipo-gasto-modelo";
+import Persona from "./persona-modelo";
+import Bolsillo from "./bolsillo-modelo";
 
 export default class Gasto extends Model {
     declare id: number
@@ -33,5 +35,10 @@ export default class Gasto extends Model {
 
     static asociacion(){
         Gasto.belongsTo(TipoGasto)
+        Gasto.belongsTo(Persona, {
+            foreignKey: "personaId",
+            targetKey: "id",
+        })
+        Gasto.belongsToMany(Bolsillo, { through: "bolsillo_gasto"})
     }
 }

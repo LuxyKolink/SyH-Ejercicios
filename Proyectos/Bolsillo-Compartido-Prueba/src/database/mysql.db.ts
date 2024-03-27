@@ -4,6 +4,8 @@ import TipoIngreso from "../model/tipo-ingreso-modelo";
 import Ingreso from "../model/ingreso-modelo";
 import Gasto from "../model/gasto-modelo";
 import TipoGasto from "../model/tipo-gasto-modelo";
+import Bolsillo from "../model/bolsillo-modelo";
+import TipoBolsillo from "../model/tipo-bolsillo-modelo";
 
 export default class ConexionDB {
 
@@ -34,8 +36,14 @@ export default class ConexionDB {
         TipoIngreso.inicioTabla(this.sequelize)
         Gasto.inicioTabla(this.sequelize)
         TipoGasto.inicioTabla(this.sequelize)
+        Bolsillo.inicioTabla(this.sequelize)
+        TipoBolsillo.inicioTabla(this.sequelize)
+        Persona.asociaciones()
         Ingreso.asociacion()
         Gasto.asociacion()
+        Bolsillo.asociacion()
+        TipoIngreso.asociaciones()
+        TipoGasto.asociaciones()
     }
 
 }

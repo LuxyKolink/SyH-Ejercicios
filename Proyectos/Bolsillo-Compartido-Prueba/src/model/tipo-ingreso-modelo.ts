@@ -1,4 +1,5 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import Ingreso from "./ingreso-modelo";
 
 export default class TipoIngreso extends Model {
     declare id: number
@@ -23,5 +24,9 @@ export default class TipoIngreso extends Model {
             tableName: "tipoingresos",
             // timestamps: false,
         });
+    }
+
+    static asociaciones(){
+        TipoIngreso.hasMany(Ingreso)
     }
 }

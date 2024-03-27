@@ -1,5 +1,6 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import TipoIngreso from "./tipo-ingreso-modelo";
+import Persona from "./persona-modelo";
 
 export default class Ingreso extends Model {
     declare id: number
@@ -33,5 +34,9 @@ export default class Ingreso extends Model {
 
     static asociacion(){
         Ingreso.belongsTo(TipoIngreso)
+        Ingreso.belongsTo(Persona, {
+            foreignKey: "personaId",
+            targetKey: "id",
+        })
     }
 }
