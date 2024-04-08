@@ -1,4 +1,5 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import Bolsillo from "./bolsillo-sequelize";
 
 export default class TipoBolsillo extends Model {
     declare id: number
@@ -25,7 +26,7 @@ export default class TipoBolsillo extends Model {
         });
     }
 
-    // static asociaciones(){
-    //     TipoBolsillo.hasMany(Ingreso)
-    // }
+    static asociaciones(){
+        TipoBolsillo.hasMany(Bolsillo)
+    }
 }

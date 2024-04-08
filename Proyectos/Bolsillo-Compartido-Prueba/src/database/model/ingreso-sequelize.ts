@@ -1,6 +1,6 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-import TipoIngreso from "./tipo-ingreso-modelo";
-import Persona from "./persona-modelo";
+import TipoIngreso from "./tipo-ingreso-sequelize";
+import Persona from "./persona-sequelize";
 
 export default class Ingreso extends Model {
     declare id: number

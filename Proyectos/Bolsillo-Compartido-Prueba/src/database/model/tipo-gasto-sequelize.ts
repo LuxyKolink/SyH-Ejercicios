@@ -1,12 +1,12 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-import Ingreso from "./ingreso-modelo";
+import Gasto from "./gasto-sequelize";
 
-export default class TipoIngreso extends Model {
+export default class TipoGasto extends Model {
     declare id: number
     declare descripcion: string
 
     static inicioTabla(sequelize: Sequelize) {
-        TipoIngreso.init({
+        TipoGasto.init({
             // Model attributes are defined here
             id: {
                 type: DataTypes.INTEGER,
@@ -20,13 +20,13 @@ export default class TipoIngreso extends Model {
         }, {
             // Other model options go here
             sequelize, // We need to pass the connection instance
-            modelName: 'TipoIngresos', // We need to choose the model name
-            tableName: "tipoingresos",
+            modelName: 'TipoGasto', // We need to choose the model name
+            tableName: "tipogastos",
             // timestamps: false,
         });
     }
 
     static asociaciones(){
-        TipoIngreso.hasMany(Ingreso)
+        TipoGasto.hasMany(Gasto)
     }
 }

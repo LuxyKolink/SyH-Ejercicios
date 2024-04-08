@@ -1,7 +1,7 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-import TipoGasto from "./tipo-gasto-modelo";
-import Persona from "./persona-modelo";
-import Bolsillo from "./bolsillo-modelo";
+import TipoGasto from "./tipo-gasto-sequelize";
+import Persona from "./persona-sequelize";
+import Bolsillo from "./bolsillo-sequelize";
 
 export default class Gasto extends Model {
     declare id: number
