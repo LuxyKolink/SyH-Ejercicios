@@ -21,8 +21,9 @@ export default class Persona extends Model {
                 allowNull: false,
             },
             email: {
-                type: DataTypes.TEXT,
-                allowNull: false
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true
             },
             cc: {
                 type: DataTypes.STRING,

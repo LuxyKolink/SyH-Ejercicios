@@ -14,8 +14,12 @@ export default class PersonasAPI {
 
     #apis = () => {
 
-        this.router.get('/', this.personaControlador.getAll)
-        this.router.post('/', this.personaControlador.create)
+        this.router.route('/')
+            .get(this.personaControlador.getAll)
+            .post(this.personaControlador.create)
+
+        this.router.route('/:id')
+            .get(this.personaControlador.getById)
 
     }
 
